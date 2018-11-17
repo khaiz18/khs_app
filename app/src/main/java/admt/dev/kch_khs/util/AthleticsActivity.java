@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.example.khs_client.adapter.AthleticsAdapter;
+import admt.dev.kch_khs.adapter.AthleticsAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;

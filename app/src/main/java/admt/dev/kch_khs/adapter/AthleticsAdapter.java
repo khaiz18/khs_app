@@ -1,4 +1,4 @@
-package com.example.khs_client.adapter;
+package admt.dev.kch_khs.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
