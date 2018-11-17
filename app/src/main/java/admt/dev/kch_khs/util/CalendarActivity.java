@@ -69,7 +69,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         protected Void doInBackground(Void... voids) {
 
             try {
-                URL url = new URL("https://script.google.com/macros/s/AKfycbzlRttplfG-sm2jUQNadN7cVx2r6HfFb3tE5g-UM0eGlHq3Id8/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycbwP2T0638xwm_aeDt74_aBVWASkOoiJ5Y4XGmNGSK0janSOU2iz/exec");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

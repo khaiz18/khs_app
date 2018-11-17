@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="admt.dev.kch_khs">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +11,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".util.MainActivity">
+        <activity
+            android:name=".util.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="admt.dev.kch_khs.util.SplashActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".util.AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".util.ResourceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".util.ClubsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".util.ContactActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".util.AthleticsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="admt.dev.kch_khs.util.CalendarActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
-
 </manifest>

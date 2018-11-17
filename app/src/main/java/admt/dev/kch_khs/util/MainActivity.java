@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (v.getId()){
             case admt.dev.kch_khs.R.id.ll_cal:
-                intent = new Intent(MainActivity.this, CalendarActivity.class);
+                intent = new Intent(MainActivity.this, admt.dev.kch_khs.util.CalendarActivity.class);
                 startActivity(intent);
                 break;
             case admt.dev.kch_khs.R.id.ll_about:
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case admt.dev.kch_khs.R.id.ll_res:
-                intent = new Intent(MainActivity.this, ResourceActivity.class);
+                intent = new Intent(MainActivity.this, admt.dev.kch_khs.util.ResourceActivity.class);
                 startActivity(intent);
                 break;
             case admt.dev.kch_khs.R.id.ll_ath:

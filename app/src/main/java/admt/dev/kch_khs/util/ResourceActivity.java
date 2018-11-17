@@ -78,7 +78,7 @@ public class ResourceActivity extends AppCompatActivity implements View.OnClickL
         protected Void doInBackground(Void... voids) {
 
             try {
-                URL url = new URL("https://script.google.com/macros/s/AKfycbzcZLu99dID2s5tfxA5Wk4X9_jDPQTAli0SkOP318ftQICjDwg/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycbwK0pUdeBjwm8FB7klk_DLv02PMzo6BXG42i4cVOzaYu9MmeMw_/exec");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
