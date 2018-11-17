@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContactActivity"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="#202020">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:background="@color/color_Red"
+        android:gravity="left"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10">
+            <ImageView
+                android:id="@+id/img_home_back_contact"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/home"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="80">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:text="Contacts" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D0D0D0"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="93">
+
+        <ListView
+            android:id="@+id/lv_contact"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+
+    </LinearLayout>
+
+</LinearLayout>

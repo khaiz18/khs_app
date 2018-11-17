@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:background="@color/color_Red"
+    android:layout_weight="100"
+    android:orientation="horizontal"
+    android:paddingLeft="10dp">
+
+    <TextView
+        android:id="@+id/tv_calendar_day"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_weight="7"
+        android:textColor="#FFFFFF"
+        android:text="12">
+
+    </TextView>
+    <TextView
+        android:id="@+id/tv_calendar_week"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_weight="86"
+        android:gravity="center"
+        android:textSize="15dp"
+        android:textColor="#FFFFFF"
+        android:text="Monday"/>
+</LinearLayout>
