@@ -5,6 +5,9 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -35,6 +38,12 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        String s= "KHS_APP powered by NHTS";
+        SpannableString ss1=  new SpannableString(s);
+        ss1.setSpan(new RelativeSizeSpan(1.5f), 0,7, 0); // set size
+        setTitle(ss1 );
         setContentView(admt.dev.kch_khs.R.layout.activity_contact);
 
         activity = this;
@@ -79,7 +88,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         protected Void doInBackground(Void... voids) {
 
             try {
-                URL url = new URL("https://script.google.com/macros/s/AKfycbx2c5EFg_GYQeLBWVYZgaxi_aUg9oF0xrqkijH-FIiffYo-i1o/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycbxFCSngyFOWHlAO_R1q0CM7LUl3Hr1k73X6SeuJLmugZmekb4UB/exec");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -87,10 +96,15 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
                 while (line != null) {
                     line = bufferedReader.readLine();
                     if(line != null)
+                        Log.d("Debug", data.toString());
                         data = data + line;
                 }
 
+
+
                 JSONObject jo_original = new JSONObject(data);
+
+                Log.d("Debug", data.toString());
                 JSONArray jsonArray = jo_original.getJSONArray("contact");
 
                 job_temp1 = new String[jsonArray.length()];

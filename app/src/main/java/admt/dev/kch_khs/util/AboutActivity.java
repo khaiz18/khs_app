@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,6 +30,12 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        String s= "KHS_APP powered by NHTS";
+        SpannableString ss1=  new SpannableString(s);
+        ss1.setSpan(new RelativeSizeSpan(1.5f), 0,7, 0); // set size
+        setTitle(ss1 );
         setContentView(admt.dev.kch_khs.R.layout.activity_about);
 
         tv_info = (TextView) findViewById(admt.dev.kch_khs.R.id.tv_info);
@@ -71,7 +79,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         protected Void doInBackground(Void... voids) {
 
             try {
-                URL url = new URL("https://script.google.com/macros/s/AKfycbzlRttplfG-sm2jUQNadN7cVx2r6HfFb3tE5g-UM0eGlHq3Id8/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycbzx0hk-z4OjMzK7Y5B5XL8CD5-6tqr7flPQB5HxGe-o7SQ_qCGN/exec");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

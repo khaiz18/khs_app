@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
@@ -16,6 +19,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import admt.dev.kch_khs.R;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     TextView tv_date;
     LinearLayout ll_cal, ll_about, ll_res, ll_ath, ll_clubs, ll_con;
@@ -23,6 +28,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        String s= "KHS_APP  powered by NHTS";
+        SpannableString ss1=  new SpannableString(s);
+        ss1.setSpan(new RelativeSizeSpan(1.5f), 0,7, 0); // set size
+
+
+        // ss1.setSpan(new ForegroundColorSpan(Color.RED), 0, 5, 0);// set color
+      //  TextView tv= (TextView) findViewById(R.id.textview);
+      //  tv.setText(ss1);
+
+
+
+
+
+        setTitle(ss1 );
         setContentView(admt.dev.kch_khs.R.layout.activity_main);
 
         ll_cal = (LinearLayout) findViewById(admt.dev.kch_khs.R.id.ll_cal);

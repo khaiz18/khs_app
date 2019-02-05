@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -35,6 +37,12 @@ public class ResourceActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        String s= "KHS_APP powered by NHTS";
+        SpannableString ss1=  new SpannableString(s);
+        ss1.setSpan(new RelativeSizeSpan(1.5f), 0,7, 0); // set size
+        setTitle(ss1 );
         setContentView(admt.dev.kch_khs.R.layout.activity_resource);
 
         activity = this;
@@ -76,9 +84,11 @@ public class ResourceActivity extends AppCompatActivity implements View.OnClickL
 
         @Override
         protected Void doInBackground(Void... voids) {
-
             try {
-                URL url = new URL("https://script.google.com/macros/s/AKfycbwK0pUdeBjwm8FB7klk_DLv02PMzo6BXG42i4cVOzaYu9MmeMw_/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycbwUL9kaUSG_DTLUsnwhGfT_QaECSUHqqvE7Zb8_WqsqJa6V61lj/exec");
+               // https://script.google.com/macros/s/AKfycbwUL9kaUSG_DTLUsnwhGfT_QaECSUHqqvE7Zb8_WqsqJa6V61lj/exec
+                //https://script.google.com/macros/s/AKfycbzLKHCHMVd3VciwauCGQaBAPoy1ItdCBwYzjaY7loB7spBJgp8/exec
+
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -90,7 +100,7 @@ public class ResourceActivity extends AppCompatActivity implements View.OnClickL
                 }
 
                 JSONObject jo_original = new JSONObject(data);
-                JSONArray jsonArray = jo_original.getJSONArray("resource");
+                JSONArray jsonArray = jo_original.getJSONArray("athletics");
 
                 title_temp = new String[jsonArray.length()];
                 info_temp = new String[jsonArray.length()];

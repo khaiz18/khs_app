@@ -5,6 +5,9 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -36,6 +39,11 @@ public class ClubsActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        String s= "KHS_APP powered by NHTS";
+        SpannableString ss1=  new SpannableString(s);
+        ss1.setSpan(new RelativeSizeSpan(1.5f), 0,7, 0); // set size
+        setTitle(ss1 );
         setContentView(admt.dev.kch_khs.R.layout.activity_clubs);
 
         activity = this;
@@ -79,7 +87,7 @@ public class ClubsActivity extends AppCompatActivity implements View.OnClickList
         protected Void doInBackground(Void... voids) {
 
             try {
-                URL url = new URL("https://script.google.com/macros/s/AKfycbxpK9YfRaYYXf1scuVpla1y3V-3JDoLgfEyssOcMhOwsiNxIt8/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycbwtg6SuQoL5285ccT5nII8pn2DmnPoSDHeskFW32zHGLXD8dGM/exec");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -88,10 +96,14 @@ public class ClubsActivity extends AppCompatActivity implements View.OnClickList
                     line = bufferedReader.readLine();
                     if(line != null)
                         data = data + line;
+                    Log.d("Debug Before Data", data.toString());
+
                 }
 
                 JSONObject jo_original = new JSONObject(data);
-                JSONArray jsonArray = jo_original.getJSONArray("clubs");
+                Log.d("Debug After Data", data.toString());
+
+                JSONArray jsonArray = jo_original.getJSONArray("club");
 
                 name_temp = new String[jsonArray.length()];
                 rep_temp = new String[jsonArray.length()];
@@ -99,12 +111,15 @@ public class ClubsActivity extends AppCompatActivity implements View.OnClickList
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject JO = (JSONObject) jsonArray.get(i);
-                    if(!(JO.getString("email").equals("")||JO.getString("email")==null)) {
+                  //  if(!(JO.getString("email").equals("")||JO.getString("email")==null))
+                    //
                         name_temp[num] = JO.getString("name");
+                        Log.i("Name String", name_temp[num]);
+
                         rep_temp[num] = JO.getString("rep");
                         email_temp[num] = JO.getString("email");
                         num++;
-                    }
+
                 }
 
 
@@ -133,10 +148,13 @@ public class ClubsActivity extends AppCompatActivity implements View.OnClickList
             for(int i=0;i<num;i++){
                 name[i] = name_temp[i];
                 rep[i] = rep_temp[i];
+
                 email[i] = email_temp[i];
             }
 
             list_adapter = new ClubsAdapter((ClubsActivity) activity, name, rep, email);
+
+
             lv_clubs.setAdapter(list_adapter);
         }
     }

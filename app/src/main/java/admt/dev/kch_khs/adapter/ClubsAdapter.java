@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import admt.dev.kch_khs.util.ClubsActivity;
 import admt.dev.kch_khs.R;
@@ -66,7 +67,8 @@ public class ClubsAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                //    Toast.makeText(context, "You Clicked " + result[position], Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "You Clicked " + name[position], Toast.LENGTH_LONG).show();
+
             }
         });
         if(name[position] == null)

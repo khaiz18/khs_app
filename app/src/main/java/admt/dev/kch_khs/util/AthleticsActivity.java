@@ -6,6 +6,8 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -37,6 +39,11 @@ public class AthleticsActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        String s= "KHS_APP powered by NHTS";
+        SpannableString ss1=  new SpannableString(s);
+        ss1.setSpan(new RelativeSizeSpan(1.5f), 0,7, 0); // set size
+        setTitle(ss1 );
         setContentView(admt.dev.kch_khs.R.layout.activity_athletics);
 
         activity = this;
@@ -81,7 +88,7 @@ public class AthleticsActivity extends AppCompatActivity implements View.OnClick
         protected Void doInBackground(Void... voids) {
 
             try {
-                URL url = new URL("https://script.google.com/macros/s/AKfycbwFEpksIuCyc4pM2EXoFkJPsyqqNQM_UUMw_pX9loWj2x_XxN4/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycbw1pvTEA59Sj1ySps6j1V6dUj76WNpu62BK0HYSNn9Go38esi0A/exec");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -89,10 +96,12 @@ public class AthleticsActivity extends AppCompatActivity implements View.OnClick
                 while (line != null) {
                     line = bufferedReader.readLine();
                     if(line != null)
+                        Log.d("Debug", data.toString());
                         data = data + line;
                 }
 
                 JSONObject jo_original = new JSONObject(data);
+                Log.d("Debug", data.toString());
                 JSONArray jsonArray = jo_original.getJSONArray("athletics");
 
                 kind_temp1 = new String[jsonArray.length()];
