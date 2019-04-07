@@ -12,6 +12,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:layout_weight="7"
+        android:background="@drawable/khslogo">
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"
         android:background="@color/color_Red"
@@ -19,6 +28,8 @@
         android:weightSum="100"
         android:orientation="horizontal"
         android:paddingLeft="10dp">
+
+
 
         <LinearLayout
             android:layout_width="0dp"

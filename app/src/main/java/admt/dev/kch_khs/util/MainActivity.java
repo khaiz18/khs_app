@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String s= "KHS_APP  powered by NHTS";
+     /*   String s= "KHS_APP  powered by NHTS";
         SpannableString ss1=  new SpannableString(s);
         ss1.setSpan(new RelativeSizeSpan(1.5f), 0,7, 0); // set size
 
@@ -42,7 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-        setTitle(ss1 );
+
+
+        setTitle(ss1 );*/
+
+        getSupportActionBar().hide();
         setContentView(admt.dev.kch_khs.R.layout.activity_main);
 
         ll_cal = (LinearLayout) findViewById(admt.dev.kch_khs.R.id.ll_cal);
@@ -76,6 +80,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         animator.start();
     }
+
+
+
 
     private void setDate(){
         Date c = Calendar.getInstance().getTime();
