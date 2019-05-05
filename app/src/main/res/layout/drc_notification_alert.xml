@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@mipmap/img_warning_4" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_gravity="center"
+        android:textSize="28sp"
+        android:textColor="#ff8040"
+        android:text="NEW DRC NOTIFICATION" />
+
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:fillViewport="true">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="196dp"
+        android:paddingLeft="15dp"
+
+        android:paddingRight="15dp"
+        android:text="Residents are only authorized to sign out their assigned room key for a duration not to exceed 30 min.\n Members who fail to comply will be punished in accordance with Article 92 of the UCMJ: Failure to Obey Order or Regulations"
+        android:textAlignment="center"
+        android:textColor="@color/color_main"
+        android:textSize="28sp"
+      />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/dismiss_button"
+        android:text="Dismiss"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textColor="@color/color_gray"
+        android:layout_marginTop="16dp"
+        android:background="@color/color_transparent"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
