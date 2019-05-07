@@ -20,10 +20,14 @@
 
 
     <LinearLayout
+
+
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_weight="10"
-        android:background="#FFFFFF">
+        android:background="#FFFFFF"
+       >
+
 
         <TextView
             android:id="@+id/tv_date"
@@ -38,12 +42,13 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/uuu"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_weight="79"
         android:background="@drawable/gradient"
         android:orientation="vertical"
-        android:weightSum="100">
+        android:weightSum="80">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -96,7 +101,7 @@
                 android:layout_weight="5"></LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_about"
+                android:id="@+id/ll_con"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="30"
@@ -107,7 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="80"
-                    android:background="@drawable/about"></LinearLayout>
+                    android:background="@drawable/contacts"></LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -118,7 +123,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="About KHS"
+                        android:text="Contacts"
                         android:textColor="@color/color_White" />
                 </LinearLayout>
             </LinearLayout>
@@ -163,6 +168,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/blank"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="5"></LinearLayout>
@@ -246,7 +252,7 @@
                 android:layout_weight="5"></LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_con"
+                android:id="@+id/ll_about"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="30"
@@ -257,7 +263,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="80"
-                    android:background="@drawable/contacts"></LinearLayout>
+                    android:background="@drawable/about"></LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -268,16 +274,58 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="Contacts"
+                        android:text="About KHS"
                         android:textColor="@color/color_White" />
                 </LinearLayout>
+
+
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="5"></LinearLayout>
+
+
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/blank1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            >
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sBell"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:layout_gravity="center"
+            android:background="@drawable/sbell">
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:textColor="@color/color_White"
+            android:textStyle="bold"
+            android:text="School Hours:"
+            />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:text="Office: 7:00 a.m - 4:30 p.m \n Teachers: 8:00 a.m - 3:20 p.m \n Students: 8:15 a.m - 3:00 p.m \n (Mon, Tue, Wed,  Fri) \n Students: 9:15 a.m - 3:00 p.m (Thr) \n Summer Hours: 8:00 - 4:00 p.m"
+            android:textColor="@color/color_White" />
 
     </LinearLayout>
 

@@ -1,54 +1,49 @@
-package com.alex.common.app;
+package admt.dev.kch_khs.app;
 
-import com.google.firebase.messaging.FirebaseMessagingService;
-
-
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-         import android.app.PendingIntent;
-         import android.content.Context;
-         import android.content.Intent;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.media.RingtoneManager;
-         import android.net.Uri;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.rabdorms.forcemobilestudios.R;
-import com.rabdorms.forcemobilestudios.activity.MainActivity;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.Map;
-import java.util.Random;
+import admt.dev.kch_khs.R;
+import admt.dev.kch_khs.util.DatabaseHelper;
+import admt.dev.kch_khs.util.MainActivity;
 
 public class MyFirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
 
     private static final String TAG = "News";
-
+    SQLiteDatabase db;
+    DatabaseHelper mdatabasehelper;
+    String fTitle;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
 
         super.onMessageReceived(remoteMessage);
+        mdatabasehelper = new DatabaseHelper(this);
+        fTitle = remoteMessage.getData().get("title");
+        String newEntry = fTitle.toString();
+        addData(newEntry);
+        Log.d("First",fTitle);
+
         Log.d("msg", "onMessageReceived: " + remoteMessage.getData().get("Message Key"));
         Intent intent = new Intent(this, notification.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
         String channelId = "Default"; //was Default
         NotificationCompat.Builder builder = new  NotificationCompat.Builder(this, channelId)
-                .setSmallIcon(R.mipmap.app_icon)
+                .setSmallIcon(R.drawable.khsicon)
                 .setContentTitle(remoteMessage.getData().get("title"))
-
                 .setContentText(remoteMessage.getData().get("Message Key")).setAutoCancel(true).setContentIntent(pendingIntent);
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -66,7 +61,22 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
     }
 
 
+    public void addData(String newEntry){
+        boolean insertData = mdatabasehelper.addData(newEntry);
 
+        if(insertData ){
+
+            Log.d("TRUE",fTitle);
+
+
+        }else
+        {
+            Log.d("FALSE",fTitle);
+
+
+        }
+
+    }
 
 
 

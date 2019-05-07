@@ -20,7 +20,7 @@
         android:layout_gravity="center"
         android:textSize="28sp"
         android:textColor="#ff8040"
-        android:text="NEW DRC NOTIFICATION" />
+        android:text="NEW KHS NOTIFICATION" />
 
     <ScrollView
         android:id="@+id/SCROLLER_ID"
@@ -38,7 +38,7 @@
         android:paddingRight="15dp"
         android:text="Residents are only authorized to sign out their assigned room key for a duration not to exceed 30 min.\n Members who fail to comply will be punished in accordance with Article 92 of the UCMJ: Failure to Obey Order or Regulations"
         android:textAlignment="center"
-        android:textColor="@color/color_main"
+        android:textColor="@color/color_Red"
         android:textSize="28sp"
       />
     </ScrollView>
@@ -48,9 +48,9 @@
         android:text="Dismiss"
         android:textAllCaps="false"
         android:textSize="18sp"
-        android:textColor="@color/color_gray"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="16dp"
-        android:background="@color/color_transparent"
+        android:background="@color/color_White"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:layout_width="match_parent"

@@ -1,35 +1,42 @@
-package com.alex.common.app;
-
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import com.google.firebase.messaging.RemoteMessage;
+package admt.dev.kch_khs.app;
 
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.rabdorms.forcemobilestudios.R;
+import admt.dev.kch_khs.util.DatabaseHelper;
 
-public class notification extends AppCompatActivity {
+import admt.dev.kch_khs.R;
+import admt.dev.kch_khs.util.AboutActivity;
+import admt.dev.kch_khs.util.Activity_Settings;
+import admt.dev.kch_khs.util.MainActivity;
+
+
+public class notification extends AppCompatActivity implements View.OnClickListener {
     private TextView textView1;
+    public static Object value;
+    Button btn;
+   DatabaseHelper mdatabasehelper;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drc_notification_alert);
-
+        mdatabasehelper = new DatabaseHelper(this);
 
         TextView text = (TextView) findViewById(R.id.textView1);
 
         try {
             SharedPreferences data = getSharedPreferences("MyPrefsFile",0);
-            text.setText("DRC NOTIFICATION : \n" + data.getString("testing", "novalue"));
+            text.setText("KHS NOTIFICATION : \n" + data.getString("testing", "novalue"));
             Log.e("main",data.getString("testing","novalue"));
         }catch (Exception e){
             e.printStackTrace();
@@ -42,9 +49,10 @@ public class notification extends AppCompatActivity {
                 Object value;
                 for (String key : getIntent().getExtras().keySet()) {
                     if (key.equals("Message Key")) {
-                        value = getIntent().getExtras().get(key); // value will represend your message body... Enjoy It
-                        text.setText("DRC NOTIFICATION : \n" + value);
+                        value = getIntent().getExtras().get(key); // value will represent your message body... Enjoy It
+                        text.setText("KHS NOTIFICATION : \n" + value);
                         Log.d("NotificationTag", key + "____" + value);
+
                     }
 
 
@@ -52,7 +60,39 @@ public class notification extends AppCompatActivity {
 
             }
         }
+
+
+
+
+
     }
+
+
+
+
+    @Override public void onClick(View v) {
+
+
+        final Button dismiss = (Button)findViewById(R.id.dismiss_button);
+
+        dismiss.setOnClickListener(this);
+
+        {
+
+
+            if (v.equals(dismiss)) {
+                startActivity(new Intent(notification.this, MainActivity.class));
+
+
+            }
+
+        }
+
+
+
+    }
+
+
 
 }
 

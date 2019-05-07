@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="200dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -19,9 +19,10 @@
             android:background="#FFFFFF"
             android:textColor="#000000"/>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="76dp"
         android:background="@color/color_Red"
         android:orientation="vertical"
         android:paddingLeft="15dp">
@@ -30,17 +31,17 @@
             android:id="@+id/tv_res_info"
             android:layout_width="match_parent"
             android:layout_height="25dp"
-            android:text="Website for SAT"
             android:gravity="center_vertical"
-            android:textColor="#FFFFFF"/>
+            android:text="Website for SAT"
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/tv_res_domain"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="35dp"
             android:gravity="center_vertical"
             android:text="https://collegereadiness.collegeboard.org/sat"
-            android:textColor="#FFFFFF"/>
-        
+            android:textColor="#FFFFFF" />
+
     </LinearLayout>
 </LinearLayout>

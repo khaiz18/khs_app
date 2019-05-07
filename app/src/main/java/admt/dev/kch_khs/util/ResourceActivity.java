@@ -1,16 +1,22 @@
 package admt.dev.kch_khs.util;
 
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import admt.dev.kch_khs.R;
 import admt.dev.kch_khs.adapter.ResourceAdatper;
 
 import org.json.JSONArray;
@@ -33,6 +39,9 @@ public class ResourceActivity extends AppCompatActivity implements View.OnClickL
     String[] info;
     String[] domain;
     Activity activity;
+    TextView tv_date;
+    private String name;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +56,29 @@ public class ResourceActivity extends AppCompatActivity implements View.OnClickL
 
         setContentView(admt.dev.kch_khs.R.layout.activity_resource);
 
+
+
         activity = this;
         lv_resource = (ListView) findViewById(admt.dev.kch_khs.R.id.lv_resource);
         img_home_back = (ImageView) findViewById(admt.dev.kch_khs.R.id.img_home_back_res);
         img_home_back.setOnClickListener(this);
+        tv_date = (TextView) findViewById(admt.dev.kch_khs.R.id.tv_date);
+
+
+
+
+
+
+
 
         fetchData process = new fetchData(this);
         process.execute();
+
+
+
+
+
+
     }
 
     @Override
@@ -114,8 +139,15 @@ public class ResourceActivity extends AppCompatActivity implements View.OnClickL
                         title_temp[num] = JO.getString("title");
                         info_temp[num] = JO.getString("info");
                         domain_temp[num] = JO.getString("domain");
+                        Log.d("test", "doInBackground: " + domain_temp[1]);
                         num++;
                     }
+
+
+
+
+
+
                 }
 
 
@@ -148,7 +180,10 @@ public class ResourceActivity extends AppCompatActivity implements View.OnClickL
             }
 
             list_adapter = new ResourceAdatper((ResourceActivity) activity, title, info, domain);
+
             lv_resource.setAdapter(list_adapter);
+
+
         }
     }
 }

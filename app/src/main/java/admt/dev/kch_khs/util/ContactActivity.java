@@ -100,7 +100,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
                     line = bufferedReader.readLine();
                     if(line != null)
                         Log.d("Debug", data.toString());
-                        data = data + line;
+                    data = data + line;
                 }
 
 
@@ -120,7 +120,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject JO = (JSONObject) jsonArray.get(i);
-                    if(!(JO.getString("contact").equals("")||JO.getString("contact")==null)) {
+                    if(!(JO.getString("kind").equals("")||JO.getString("kind")==null)) {
                         if(JO.getString("kind").equals("Administration")) {
                             job_temp1[num1] = JO.getString("job");
                             name_temp1[num1] = JO.getString("name");

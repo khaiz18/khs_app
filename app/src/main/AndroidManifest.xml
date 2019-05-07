@@ -7,6 +7,32 @@
 
 
     <application
+
+        android:label="@string/app_name"
+        android:icon="@drawable/khsicon"
+
+        android:theme="@style/AppTheme">
+
+
+        <service android:name=".app.MyFirebaseMessagingService">
+
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".app.MyFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+
+
+
+
+
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -29,6 +55,9 @@
             android:name=".util.AboutActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".util.Activity_Settings"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".util.ResourceActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -41,5 +70,33 @@
             android:screenOrientation="portrait"/>
         <activity android:name="admt.dev.kch_khs.util.CalendarActivity"
             android:screenOrientation="portrait"></activity>
+        <activity android:name="admt.dev.kch_khs.util.fbell"
+            android:screenOrientation="portrait"></activity>
+        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/khsicon" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
+        <activity
+            android:name=".app.notification">
+            <intent-filter>
+                <action android:name="SOMEACTIVITY"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+
+            </intent-filter>
+        </activity>
+
+
+
+
     </application>
+
+
+
 </manifest>

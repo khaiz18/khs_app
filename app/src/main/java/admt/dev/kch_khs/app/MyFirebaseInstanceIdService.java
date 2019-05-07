@@ -1,9 +1,5 @@
-package com.alex.common.app;
+package admt.dev.kch_khs.app;
 import android.util.Log;
-
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
-
 
 import com.google.firebase.iid.FirebaseInstanceId;
 

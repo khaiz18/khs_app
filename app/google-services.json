@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "631383494018",
+    "firebase_url": "https://khsapp-b0190.firebaseio.com",
+    "project_id": "khsapp-b0190",
+    "storage_bucket": "khsapp-b0190.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:631383494018:android:b11fd45271c06e28",
+        "android_client_info": {
+          "package_name": "admt.dev.kch_khs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "631383494018-p9pktlv1pgjrq0ma3vgv5v99al1oemve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRyF7k7FNBTq4y1gtjkSHPYc4ACpb54JE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "631383494018-p9pktlv1pgjrq0ma3vgv5v99al1oemve.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
