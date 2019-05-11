@@ -108,7 +108,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         protected Void doInBackground(Void... voids) {
 
             try {
-                URL url = new URL("https://script.google.com/macros/s/AKfycbwP2T0638xwm_aeDt74_aBVWASkOoiJ5Y4XGmNGSK0janSOU2iz/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycbybjgYsF7Te5oa-hCjYqoaq0xZ8aSuW-5F-t3LOoeqVFFZ2o0k/exec");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -124,7 +124,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
                 JSONObject jo_original = new JSONObject(data);
                 Log.d("Debug object", jo_original.toString());
-                JSONArray jsonArray = jo_original.getJSONArray("test");
+                JSONArray jsonArray = jo_original.getJSONArray("calendar");
                 Log.d("Debug  array", jsonArray.toString());
 
                 title_temp = new String[jsonArray.length()];
@@ -154,12 +154,10 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
                         event_temp[num] = JO.getString("title");
 
                         loc_temp[num] = JO.getString("loc");
-                        Log.d("location temp", loc_temp[num].toString());
 
                         stime_temp[num] = JO.getString("stime");
-                        Log.d("stime temp", stime_temp[num].toString());
 
-                        etime_temp[num] = JO.getString("etime");
+                        etime_temp[num] = JO.getString("end");
 
 
 

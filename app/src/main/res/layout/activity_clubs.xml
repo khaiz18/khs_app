@@ -66,52 +66,6 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#D0D0D0"></LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:text="Club Name"
-                    android:textSize="20dp"
-                    android:background="@color/color_Red"
-                    android:textColor="#FFFFFF"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#FFFFFF"
-                android:weightSum="2"
-                android:orientation="vertical"
-                android:paddingLeft="15dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="Club Representative"
-                    android:textStyle="bold"
-                    android:gravity="center_vertical"
-                    android:textColor="#000000"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="Room : Email of Representative"
-                    android:textColor="#000000"/>
-
-            </LinearLayout>
-        </LinearLayout>
 
         <ListView
             android:id="@+id/lv_clubs"

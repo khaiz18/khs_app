@@ -12,15 +12,16 @@ import admt.dev.kch_khs.util.ClubsActivity;
 import admt.dev.kch_khs.R;
 
 public class ClubsAdapter extends BaseAdapter {
-    String [] name, rep, email;
+    String [] name, rep, email, location;
     Context context;
     private static LayoutInflater inflater=null;
 
-    public ClubsAdapter(ClubsActivity clubsActivity, String[] name, String[] rep, String[] email) {
+    public ClubsAdapter(ClubsActivity clubsActivity, String[] name, String[] rep, String [] location, String[] email) {
         // TODO Auto-generated constructor stub
         this.name=name;
         this.rep=rep;
         this.email=email;
+        this.location = location;
         context=clubsActivity;
         inflater = ( LayoutInflater )context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -46,7 +47,7 @@ public class ClubsAdapter extends BaseAdapter {
 
     public class Holder
     {
-        TextView tv_clubs_name, tv_clubs_rep, tv_clubs_email;
+        TextView tv_clubs_name, tv_clubs_rep, tv_clubs_email, tv_clubs_location;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -58,10 +59,12 @@ public class ClubsAdapter extends BaseAdapter {
         holder.tv_clubs_name=(TextView) view.findViewById(R.id.tv_clubs_name);
         holder.tv_clubs_rep=(TextView) view.findViewById(R.id.tv_clubs_rep);
         holder.tv_clubs_email=(TextView) view.findViewById(R.id.tv_clubs_email);
+        holder.tv_clubs_location = (TextView) view.findViewById(R.id.tv_clubs_location);
 
         holder.tv_clubs_name.setText(name[position]);
-        holder.tv_clubs_rep.setText(rep[position]);
-        holder.tv_clubs_email.setText("Room : "+email[position]);
+        holder.tv_clubs_rep.setText(" Name: " + rep[position]);
+        holder.tv_clubs_location.setText(" Location: " + location[position]);
+        holder.tv_clubs_email.setText("Email: "+ email[position]);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

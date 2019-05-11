@@ -74,8 +74,8 @@ public class CalendarAdapter extends BaseAdapter {
 
         holder.tv_calendar_title = (TextView) view.findViewById(R.id.tv_cal_title);
         holder.tv_calendar_dec = (TextView) view.findViewById(R.id.tv_cal_desc);
-        holder.tv_calendar_month = (TextView) view.findViewById(R.id.tv_cal_month);
-        holder.tv_calendar_day = (TextView) view.findViewById(R.id.tv_cal_day);
+      //  holder.tv_calendar_month = (TextView) view.findViewById(R.id.tv_cal_month);
+      //  holder.tv_calendar_day = (TextView) view.findViewById(R.id.tv_cal_day);
 
 
         holder.tv_calendar_ename = (TextView) view.findViewById(R.id.tv_cal_ename);
@@ -92,7 +92,6 @@ public class CalendarAdapter extends BaseAdapter {
         holder.tv_calendar_loc.setText(" Location: " + loc[position]);
 
         holder.tv_calendar_stime.setText(" Start Time: " + stime[position]);
-        Log.d("stime value settext", holder.tv_calendar_stime.toString());
 
         holder.tv_calendar_etime.setText(" End Time: " + etime[position]);
 

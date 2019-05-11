@@ -47,27 +47,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="stime"
+            android:text=""
 
             android:textColor="#FFFFFF"/>
 
-        <TextView
-            android:id="@+id/tv_cal_month"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:text="stime"
 
-            android:textColor="#FFFFFF"/>
-
-        <TextView
-            android:id="@+id/tv_cal_day"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:text="stime"
-
-            android:textColor="#FFFFFF"/>
 
         <TextView
             android:id="@+id/tv_cal_etime"

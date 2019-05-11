@@ -22,7 +22,7 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="100dp"
         android:background="#FFFFFF"
         android:orientation="vertical"
         android:paddingLeft="15dp">
@@ -30,18 +30,26 @@
         <TextView
             android:id="@+id/tv_clubs_rep"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="30dp"
             android:text="Club Representative"
             android:textStyle="bold"
             android:gravity="center_vertical"
             android:textColor="#000000"/>
 
         <TextView
+            android:id="@+id/tv_clubs_location"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="Location"
+            android:textColor="#000000"/>
+
+        <TextView
             android:id="@+id/tv_clubs_email"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="30dp"
             android:gravity="center_vertical"
-            android:text="Room : Email of Representative"
+            android:text="Location"
             android:textColor="#000000"/>
 
     </LinearLayout>

@@ -34,6 +34,7 @@ public class ClubsActivity extends AppCompatActivity implements View.OnClickList
     String[] name;
     String[] rep;
     String[] email;
+    String[] location;
     Activity activity;
 
     @Override
@@ -72,6 +73,7 @@ public class ClubsActivity extends AppCompatActivity implements View.OnClickList
         String[] name_temp;
         String[] rep_temp;
         String[] email_temp;
+        String [] location_temp;
         int num=0;
         private ProgressDialog dialog;
 
@@ -89,7 +91,7 @@ public class ClubsActivity extends AppCompatActivity implements View.OnClickList
         protected Void doInBackground(Void... voids) {
 
             try {
-                URL url = new URL("https://script.google.com/macros/s/AKfycbwtg6SuQoL5285ccT5nII8pn2DmnPoSDHeskFW32zHGLXD8dGM/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycbxk4CzvxKI_DZzKwwEDQzGpSOcieinw9JCMvPGM_ObsZ6O9YyN_/exec");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -109,7 +111,9 @@ public class ClubsActivity extends AppCompatActivity implements View.OnClickList
 
                 name_temp = new String[jsonArray.length()];
                 rep_temp = new String[jsonArray.length()];
+                location_temp = new String[jsonArray.length()];
                 email_temp = new String[jsonArray.length()];
+
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject JO = (JSONObject) jsonArray.get(i);
@@ -119,6 +123,7 @@ public class ClubsActivity extends AppCompatActivity implements View.OnClickList
                         Log.i("Name String", name_temp[num]);
 
                         rep_temp[num] = JO.getString("rep");
+                        location_temp[num] = JO.getString("location");
                         email_temp[num] = JO.getString("email");
                         num++;
 
@@ -146,15 +151,18 @@ public class ClubsActivity extends AppCompatActivity implements View.OnClickList
 
             name = new String[num];
             rep = new String[num];
+            location = new String[num];
             email = new String[num];
+
             for(int i=0;i<num;i++){
                 name[i] = name_temp[i];
                 rep[i] = rep_temp[i];
+                location[i] = location_temp[i];
 
                 email[i] = email_temp[i];
             }
 
-            list_adapter = new ClubsAdapter((ClubsActivity) activity, name, rep, email);
+            list_adapter = new ClubsAdapter((ClubsActivity) activity, name, rep, location, email);
 
 
             lv_clubs.setAdapter(list_adapter);
