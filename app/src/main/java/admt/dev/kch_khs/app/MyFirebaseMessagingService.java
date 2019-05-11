@@ -31,7 +31,7 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
 
         super.onMessageReceived(remoteMessage);
         mdatabasehelper = new DatabaseHelper(this);
-        fTitle = remoteMessage.getData().get("title");
+        fTitle = remoteMessage.getData().get("Message Key");
         String newEntry = fTitle.toString();
         addData(newEntry);
         Log.d("First",fTitle);

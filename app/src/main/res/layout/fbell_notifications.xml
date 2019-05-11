@@ -34,7 +34,7 @@
             android:layout_height="match_parent"
             android:layout_weight="10">
             <ImageView
-                android:id="@+id/img_home_back_athletics"
+                android:id="@+id/img_home_back_clubs"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/home"/>
@@ -62,24 +62,36 @@
         android:layout_height="1dp"
         android:background="#D0D0D0"></LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="93">
-        <ImageButton
+
+        <Button
             android:id="@+id/imgbtnDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="5dp"
-            android:background="@android:color/white"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/sdelete" />
+            android:text="Clear All"
+            android:background="@drawable/sdelete" />
+
+
+
+
+
 
         <ListView
             android:id="@+id/fbell_list"
             android:background="@color/color_White"
             android:layout_width="match_parent"
-            android:layout_height="500dp"></ListView>
+            android:layout_height="500dp">
+
+
+
+
+        </ListView>
 
     </LinearLayout>
 

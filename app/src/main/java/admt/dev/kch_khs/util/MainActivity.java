@@ -5,21 +5,28 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import admt.dev.kch_khs.util.fbell;
 import admt.dev.kch_khs.app.MyFirebaseMessagingService;
 import admt.dev.kch_khs.app.notification;
 
@@ -28,6 +35,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,12 +45,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 import admt.dev.kch_khs.R;
 import admt.dev.kch_khs.adapter.ResourceAdatper;
+import admt.dev.kch_khs.util.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     TextView tv_date;
@@ -55,31 +65,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String[] domain;
     Activity activity;
 
-
+    public ListView mlistview;
+    DatabaseHelper mDatabaseHelper;
+    String yo = "hi";
     private String name;
-
+    View rootView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         FirebaseMessaging.getInstance().subscribeToTopic("test");
 
-     /*   String s= "KHS_APP  powered by NHTS";
-        SpannableString ss1=  new SpannableString(s);
-        ss1.setSpan(new RelativeSizeSpan(1.5f), 0,7, 0); // set size
-
-
-        // ss1.setSpan(new ForegroundColorSpan(Color.RED), 0, 5, 0);// set color
-      //  TextView tv= (TextView) findViewById(R.id.textview);
-      //  tv.setText(ss1);
 
 
 
+        mlistview = (ListView) findViewById(R.id.fbell_list);
+
+
+        String Username;
+
+
+        ArrayList<String> listItem;
+        ArrayAdapter adapter;
 
 
 
 
-        setTitle(ss1 );*/
+
+
+
+
+
+
 
         getSupportActionBar().hide();
         setContentView(admt.dev.kch_khs.R.layout.activity_main);
@@ -91,6 +108,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ll_clubs = (LinearLayout) findViewById(admt.dev.kch_khs.R.id.ll_clubs);
         ll_con = (LinearLayout) findViewById(admt.dev.kch_khs.R.id.ll_con);
         tv_date = (TextView) findViewById(admt.dev.kch_khs.R.id.tv_date);
+        tv_date.setSelected(true);
+        tv_date.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+        tv_date.setSingleLine(true);
         sBell = (LinearLayout) findViewById(R.id.sBell);
 
         ll_cal.setOnClickListener(this);
@@ -101,13 +121,71 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ll_con.setOnClickListener(this);
         sBell.setOnClickListener(this);
 
-        // setDate();
-        //notifyme(tv_date);
-        //System.out.println(tv_date);
-        //doInBackground();
-       // tv_date.toString(notification.value);
 
-       /* final ValueAnimator animator = ValueAnimator.ofFloat(1.0f, -1.0f);
+
+
+
+
+
+
+
+
+
+
+      //  ArrayList<String> listData = new ArrayList<>();
+
+      //android.widget.ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
+       // mlistview.setAdapter(adapter);
+
+
+            /*tv_date.setText("rwar");
+            final ValueAnimator animator = ValueAnimator.ofFloat(1.0f, -1.0f);
+            animator.setRepeatCount(ValueAnimator.INFINITE);
+            animator.setInterpolator(new LinearInterpolator());
+            animator.setDuration(9000L);
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    final float progress = (float) animation.getAnimatedValue();
+                    final float width = tv_date.getWidth();
+                    final float translationX = width * progress;
+                    tv_date.setTranslationX(translationX);
+                }
+            });
+            animator.start();*/
+
+        dbtest();
+        }
+
+     //   MainActivity.fetchData process = new fetchData(this);
+     //   process.execute();
+
+    public void dbtest(){
+
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        Cursor cursor = db.getData();
+        cursor.moveToFirst();
+        String[] myFloats = {" ", " " , " ", " "};
+
+        if (cursor.moveToFirst())
+        {
+            for (int i = 0; i < cursor.getCount(); i++)
+            {
+                myFloats[i] = cursor.getString(1);
+                cursor.moveToNext();
+            }
+        }
+        cursor.close();
+       // tv_date.setText(myFloats[0] + " " + myFloats[1] );
+      //  tv_date.setText(cursor.getString(1).toString());
+
+
+        tv_date.setText("\t \t \t \t \t \t"+ myFloats[0]  + "\t \t \t \t \t \t" + myFloats[1] + "\t \t \t \t \t \t" + myFloats[2] + "\t \t \t \t \t \t" + myFloats[3] );
+
+        final float startSize = 1; // Size in pixels
+        final float endSize = 1;
+        final ValueAnimator animator = ValueAnimator.ofFloat(1.0f, -1.0f);
         animator.setRepeatCount(ValueAnimator.INFINITE);
         animator.setInterpolator(new LinearInterpolator());
         animator.setDuration(9000L);
@@ -120,11 +198,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tv_date.setTranslationX(translationX);
             }
         });
-        animator.start();*/
+        animator.start();
 
-       MainActivity.fetchData process = new fetchData(this);
-        process.execute();
+
+
     }
+
+
+
+
+
+
 
 
     private void setDate() {
@@ -283,7 +367,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //   lv_resource.setAdapter(list_adapter);
 
-            tv_date.setText(title[0]);
+          /*  tv_date.setText(title[0]);
             final ValueAnimator animator = ValueAnimator.ofFloat(1.0f, -1.0f);
             animator.setRepeatCount(ValueAnimator.INFINITE);
             animator.setInterpolator(new LinearInterpolator());
@@ -297,7 +381,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     tv_date.setTranslationX(translationX);
                 }
             });
-            animator.start();
+           animator.start();*/
         }
 
 

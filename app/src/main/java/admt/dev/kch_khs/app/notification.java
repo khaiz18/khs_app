@@ -77,7 +77,7 @@ public class notification extends AppCompatActivity implements View.OnClickListe
 
         dismiss.setOnClickListener(this);
 
-        {
+
 
 
             if (v.equals(dismiss)) {
@@ -86,7 +86,7 @@ public class notification extends AppCompatActivity implements View.OnClickListe
 
             }
 
-        }
+
 
 
 

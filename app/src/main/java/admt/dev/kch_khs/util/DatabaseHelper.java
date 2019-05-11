@@ -18,6 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "fnotification";
     private static final String col0 = "id";
     private static final String col1 = "title";
+    private static final String col2 = "body";
 
 
     public DatabaseHelper(Context context){
@@ -26,6 +27,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     }
+
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -69,6 +72,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     Cursor data = db.rawQuery(query,null);
     return data;
 
+
+
     }
+
+
+
 
 }
