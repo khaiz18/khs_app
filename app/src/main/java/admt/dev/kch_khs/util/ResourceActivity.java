@@ -112,7 +112,7 @@ public class ResourceActivity extends AppCompatActivity implements View.OnClickL
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                URL url = new URL("https://script.google.com/macros/s/AKfycbwUL9kaUSG_DTLUsnwhGfT_QaECSUHqqvE7Zb8_WqsqJa6V61lj/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycby7INdrTU-2KrZ9Ts3trJqja-zticWdUgrCZtXje_5mfaPtIFYE/exec");
                // https://script.google.com/macros/s/AKfycbwUL9kaUSG_DTLUsnwhGfT_QaECSUHqqvE7Zb8_WqsqJa6V61lj/exec
                 //https://script.google.com/macros/s/AKfycbzLKHCHMVd3VciwauCGQaBAPoy1ItdCBwYzjaY7loB7spBJgp8/exec
 
@@ -127,7 +127,7 @@ public class ResourceActivity extends AppCompatActivity implements View.OnClickL
                 }
 
                 JSONObject jo_original = new JSONObject(data);
-                JSONArray jsonArray = jo_original.getJSONArray("athletics");
+                JSONArray jsonArray = jo_original.getJSONArray("resources");
 
                 title_temp = new String[jsonArray.length()];
                 info_temp = new String[jsonArray.length()];
