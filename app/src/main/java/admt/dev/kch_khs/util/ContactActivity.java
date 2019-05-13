@@ -39,12 +39,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /*
-        getSupportActionBar().hide();
-        String s= "KHS_APP powered by NHTS";
-        SpannableString ss1=  new SpannableString(s);
-        ss1.setSpan(new RelativeSizeSpan(1.5f), 0,7, 0); // set size
-        setTitle(ss1 );*/
+
         getSupportActionBar().hide();
 
         setContentView(admt.dev.kch_khs.R.layout.activity_contact);
@@ -71,10 +66,10 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     public class fetchData extends AsyncTask<Void,Void,Void> {
 
         String data = "";
-        String[] job_temp1, job_temp2;
-        String[] name_temp1, name_temp2;
-        String[] email_temp1, email_temp2;
-        int num1=0, num2=0;
+        String[] job_temp1, job_temp2, job_temp3, job_temp4,job_temp5;
+        String[] name_temp1, name_temp2, name_temp3,name_temp4,name_temp5;
+        String[] email_temp1, email_temp2, email_temp3;
+        int num1=0, num2=0, num3=0, num4=0, num5=0, num6=0,num7=0,num8=0,num9=0,num10=0,num11=0,num12=0,num13=0;
         private ProgressDialog dialog;
 
         public fetchData(ContactActivity activity) {
@@ -91,7 +86,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         protected Void doInBackground(Void... voids) {
 
             try {
-                URL url = new URL("https://script.google.com/macros/s/AKfycbxFCSngyFOWHlAO_R1q0CM7LUl3Hr1k73X6SeuJLmugZmekb4UB/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycbxmFfeRi5fKH3h7_Yfa4nuCxmQvEMn7x-lYHYuFOSkmn27EpYMl/exec");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -118,20 +113,32 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
                 name_temp2 = new String[jsonArray.length()];
                 email_temp2 = new String[jsonArray.length()];
 
+                job_temp3 = new String[jsonArray.length()];
+                name_temp3 = new String[jsonArray.length()];
+                email_temp3 = new String[jsonArray.length()];
+
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject JO = (JSONObject) jsonArray.get(i);
-                    if(!(JO.getString("kind").equals("")||JO.getString("kind")==null)) {
-                        if(JO.getString("kind").equals("Administration")) {
+                    if(!(JO.getString("position").equals("")||JO.getString("position")==null)) {
+                        if(JO.getString("position").equals("Administration")) {
                             job_temp1[num1] = JO.getString("job");
                             name_temp1[num1] = JO.getString("name");
-                            email_temp1[num1] = JO.getString("email");
+                           // email_temp1[num1] = JO.getString("email");
                             num1++;
                         }
-                        else {
+                        else if (JO.getString("position").equals("Counseling")) {
                             job_temp2[num2] = JO.getString("job");
                             name_temp2[num2] = JO.getString("name");
-                            email_temp2[num2] = JO.getString("email");
+                          //  email_temp2[num2] = JO.getString("email");
                             num2++;
+                        }else if (JO.getString("position").equals("Faculty (SPED)")){
+
+                            job_temp3[num3] = JO.getString("job");
+                            name_temp3[num3]= JO.getString("name");
+                           // email_temp3[num3] = JO.getString("email");
+
+                            num3++;
+
                         }
                     }
                 }
@@ -156,24 +163,40 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
                 dialog.dismiss();
             }
 
-            job = new String[num1+num2+2];
-            name = new String[num1+num2+2];
-            email = new String[num1+num2+2];
+            job = new String[num1+num2+num3+num4+num5+num6+num7+num8+num9+num10+num11+num12+num13+14];
+            name = new String[num1+num2+num3+num4+num5+num6+num7+num8+num9+num10+num11+num12+num13+14];
+          //  email = new String[num1+num2+2+num3+3];
 
             job[0] = "Administration";
             for(int i=1;i<num1+1;i++){
                 job[i] = job_temp1[i-1];
                 name[i] = name_temp1[i-1];
-                email[i] = email_temp1[i-1];
+              //  email[i] = email_temp1[i-1];
             }
-            job[num1+1] = "Faculty";
+            job[num1+1] = "Counseling";
             for(int i=num1+2;i<num1+num2+2;i++){
                 job[i] = job_temp2[i-num1-2];
                 name[i] = name_temp2[i-num1-2];
-                email[i] = email_temp2[i-num1-2];
+              //  email[i] = email_temp2[i-num1-2];
             }
+            job[num1+num2+2] = "Faculty (SPED)";
+            for(int i=num1+num2+3;i<num1+num2+num3+3;i++){
+                job[i] = job_temp3[i-num1-num2-3];
+               name[i] = name_temp3[i-num1-num2-3];
+               // email[i] = email_temp3[i-num1-2];
+            }job[num1+num2+num3+3] = "English";
+             job[num1+num2+num3+num4+4] = "Science";
+             job[num1+num2+num3+num4+num5+5] = "Math";
+             job[num1+num2+num3+num4+num5+num6+6] = "English";
+             job[num1+num2+num3+num4+num5+num6+num7+7] = "Social Studies";
+             job[num1+num2+num3+num4+num5+num6+num7+num8+8] = "Career and Tech Ed";
+             job[num1+num2+num3+num4+num5+num6+num7+num8+num9+9] = "Physical Education/Health";
+             job[num1+num2+num3+num4+num5+num6+num7+num8+num9+num10+10] = "Special Education";
+             job[num1+num2+num3+num4+num5+num6+num7+num8+num9+num10+num11+11] = "World Languages";
+             job[num1+num2+num3+num4+num5+num6+num7+num8+num9+num10+num11+num12+12] = "Fine Arts";
+             job[num1+num2+num3+num4+num5+num6+num7+num8+num9+num10+num11+num12+num13+13] = "Staff";
 
-            list_adapter = new ContactAdapter((ContactActivity) activity, job, name, email);
+            list_adapter = new ContactAdapter((ContactActivity) activity, job, name);
             lv_contact.setAdapter(list_adapter);
         }
     }

@@ -45,7 +45,7 @@ public class AthleticsAdapter extends BaseAdapter {
 
     public class Holder
     {
-        TextView tv_athletics_sport, tv_athletics_name, tv_athletics_title;
+        TextView tv_athletics_sport, tv_athletics_name, tv_athletics_title, tv_athletics_email;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -63,9 +63,11 @@ public class AthleticsAdapter extends BaseAdapter {
 
             holder.tv_athletics_sport = (TextView) view.findViewById(R.id.tv_athletics_sport);
             holder.tv_athletics_name = (TextView) view.findViewById(R.id.tv_athletics_name);
+            holder.tv_athletics_email = (TextView) view.findViewById(R.id.tv_athletics_email);
 
             holder.tv_athletics_sport.setText(sport[position]);
             holder.tv_athletics_name.setText(name[position]);
+            holder.tv_athletics_email.setText(kind[position]);
         }
         return view;
     }

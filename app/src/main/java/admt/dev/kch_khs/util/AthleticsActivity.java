@@ -90,7 +90,7 @@ public class AthleticsActivity extends AppCompatActivity implements View.OnClick
         protected Void doInBackground(Void... voids) {
 
             try {
-                URL url = new URL("https://script.google.com/macros/s/AKfycbw1pvTEA59Sj1ySps6j1V6dUj76WNpu62BK0HYSNn9Go38esi0A/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycbwujJeHZ3-NGtX_rziH0YsTzi8fNdzk2EsYLTHvRwu-EUcRIbMO/exec");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -120,21 +120,21 @@ public class AthleticsActivity extends AppCompatActivity implements View.OnClick
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject JO = (JSONObject) jsonArray.get(i);
-                    if(!(JO.getString("kind").equals("")||JO.getString("kind")==null)) {
-                        if(JO.getString("kind").equals("Spring")) {
-                            kind_temp1[num1] = "1";
+                    if(!(JO.getString("season").equals("")||JO.getString("season")==null)) {
+                        if(JO.getString("season").equals("Spring")) {
+                            kind_temp1[num1] = JO.getString("email");
                             sport_temp1[num1] = JO.getString("sport");
                             name_temp1[num1] = JO.getString("name");
                             num1++;
                         }
-                        if(JO.getString("kind").equals("Fall")){
-                            kind_temp2[num2] = "2";
+                        if(JO.getString("season").equals("Fall")){
+                            kind_temp2[num2] = JO.getString("email");
                             sport_temp2[num2] = JO.getString("sport");
                             name_temp2[num2] = JO.getString("name");
                             num2++;
                         }
-                        if(JO.getString("kind").equals("Winter")){
-                            kind_temp3[num3] = "3";
+                        if(JO.getString("season").equals("Winter")){
+                            kind_temp3[num3] = JO.getString("email");
                             sport_temp3[num3] = JO.getString("sport");
                             name_temp3[num3] = JO.getString("name");
                             num3++;

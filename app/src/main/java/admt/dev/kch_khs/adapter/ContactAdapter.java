@@ -15,7 +15,7 @@ public class ContactAdapter extends BaseAdapter {
     Context context;
     private static LayoutInflater inflater=null;
 
-    public ContactAdapter(ContactActivity contactActivity, String[] job, String[] name, String[] email) {
+    public ContactAdapter(ContactActivity contactActivity, String[] job, String[] name) {
         // TODO Auto-generated constructor stub
         this.job=job;
         this.name=name;
@@ -50,7 +50,7 @@ public class ContactAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View view;
-        if(job[position].equals("Administration")||job[position].equals("Faculty")){
+        if( "Administration".equalsIgnoreCase(job[position])||"Counseling".equalsIgnoreCase(job[position]) || "Science".equalsIgnoreCase(job[position])||"Math".equalsIgnoreCase(job[position])||"English".equalsIgnoreCase(job[position])||"Social Studies".equalsIgnoreCase(job[position])||"Career and Tech Ed".equalsIgnoreCase(job[position])||"Physical Education/Health".equalsIgnoreCase(job[position])||"Special Education".equalsIgnoreCase(job[position])||"World Languages".equalsIgnoreCase(job[position])||"Fine Arts".equalsIgnoreCase(job[position])||"Faculty (SPED)".equalsIgnoreCase(job[position])||"Staff".equalsIgnoreCase(job[position])||"English".equalsIgnoreCase(job[position])||"English".equalsIgnoreCase(job[position]) ){
             Holder holder = new Holder();
             view = inflater.inflate(R.layout.listitem_contact_title, null);
             holder.tv_contact_title = (TextView) view.findViewById(R.id.tv_contact_title);
@@ -63,11 +63,11 @@ public class ContactAdapter extends BaseAdapter {
 
             holder.tv_contact_job = (TextView) view.findViewById(R.id.tv_contact_kind);
             holder.tv_contact_name = (TextView) view.findViewById(R.id.tv_contact_name);
-            holder.tv_contact_email = (TextView) view.findViewById(R.id.tv_contact_email);
+        //    holder.tv_contact_email = (TextView) view.findViewById(R.id.tv_contact_email);
 
             holder.tv_contact_job.setText(job[position]);
             holder.tv_contact_name.setText(name[position]);
-            holder.tv_contact_email.setText(email[position]);
+//            holder.tv_contact_email.setText(email[position]);
         }
         return view;
     }
