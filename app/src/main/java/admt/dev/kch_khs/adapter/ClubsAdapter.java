@@ -64,7 +64,7 @@ public class ClubsAdapter extends BaseAdapter {
         holder.tv_clubs_name.setText(name[position]);
         holder.tv_clubs_rep.setText(" Name: " + rep[position]);
         holder.tv_clubs_location.setText(" Location: " + location[position]);
-        holder.tv_clubs_email.setText("Email: "+ email[position]);
+        holder.tv_clubs_email.setText(" Email: "+ email[position]);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

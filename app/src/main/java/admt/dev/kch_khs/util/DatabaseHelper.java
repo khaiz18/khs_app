@@ -3,6 +3,7 @@ package admt.dev.kch_khs.util;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.ContactsContract;
@@ -75,6 +76,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     }
+
 
 
 

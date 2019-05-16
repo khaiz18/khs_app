@@ -20,7 +20,7 @@
         android:layout_gravity="center"
         android:textSize="28sp"
         android:textColor="#ff8040"
-        android:text="NEW KHS NOTIFICATION" />
+        android:text="NEW NOTIFICATION" />
 
     <ScrollView
         android:id="@+id/SCROLLER_ID"

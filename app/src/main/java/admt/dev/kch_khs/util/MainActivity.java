@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ import admt.dev.kch_khs.app.MyFirebaseMessagingService;
 import admt.dev.kch_khs.app.notification;
 
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.nex3z.notificationbadge.NotificationBadge;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -64,10 +66,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String[] info;
     String[] domain;
     Activity activity;
+    NotificationBadge mBadge;
+    private static final String TABLE_NAME = "fnotification";
+
+
 
     public ListView mlistview;
     DatabaseHelper mDatabaseHelper;
-    String yo = "hi";
     private String name;
     View rootView;
     @Override
@@ -80,22 +85,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         mlistview = (ListView) findViewById(R.id.fbell_list);
-
-
-        String Username;
-
-
-        ArrayList<String> listItem;
-        ArrayAdapter adapter;
-
-
-
-
-
-
-
-
-
 
 
         getSupportActionBar().hide();
@@ -132,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
       //  ArrayList<String> listData = new ArrayList<>();
 
       //android.widget.ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
@@ -154,13 +144,56 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             });
             animator.start();*/
 
-        dbtest();
-        }
+        dbticker();
 
-     //   MainActivity.fetchData process = new fetchData(this);
-     //   process.execute();
+        dbBadge();
 
-    public void dbtest(){
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dbticker();
+        dbBadge();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        dbticker();
+        dbBadge();
+    }
+
+        public void dbBadge() {
+
+
+
+                DatabaseHelper db = new DatabaseHelper(this);
+
+                Cursor cursor = db.getData();
+                cursor.moveToFirst();
+
+                if (cursor.moveToFirst()) {
+                    for (int i = 0; i < cursor.getCount(); i++) {
+                        cursor.moveToNext();
+                    }
+                }
+                cursor.close();
+                db.close();
+            mBadge = (NotificationBadge) findViewById(R.id.badge);
+
+            mBadge.setNumber(cursor.getCount());
+
+
+
+            }
+
+
+
+
+
+    public void dbticker(){
 
         DatabaseHelper db = new DatabaseHelper(this);
 
@@ -177,8 +210,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         cursor.close();
-       // tv_date.setText(myFloats[0] + " " + myFloats[1] );
-      //  tv_date.setText(cursor.getString(1).toString());
+        db.close();
 
 
         tv_date.setText("\t \t \t \t \t \t"+ myFloats[0]  + "\t \t \t \t \t \t" + myFloats[1] + "\t \t \t \t \t \t" + myFloats[2] + "\t \t \t \t \t \t" + myFloats[3] );
@@ -199,7 +231,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         animator.start();
-
 
 
     }
