@@ -86,7 +86,7 @@ public class CalendarAdapter extends BaseAdapter {
 
 
 
-        holder.tv_calendar_title.setText( month[position] + " " + day[position] + " " + title[position]);
+        holder.tv_calendar_title.setText( title[position]);
         holder.tv_calendar_dec.setText(" Description: "+ descr[position]);
         holder.tv_calendar_ename.setText(" Event Name: " + ename[position]);
         holder.tv_calendar_loc.setText(" Location: " + loc[position]);

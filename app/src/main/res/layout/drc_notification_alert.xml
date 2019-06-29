@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    >
 
     <ImageView
         android:id="@+id/imageView2"
@@ -18,6 +19,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginBottom="12dp"
         android:layout_gravity="center"
+        android:background="@color/color_Red"
         android:textSize="28sp"
         android:textColor="#ff8040"
         android:text="NEW NOTIFICATION" />
@@ -43,16 +45,16 @@
       />
     </ScrollView>
 
+
     <Button
-        android:id="@+id/dismiss_button"
-        android:text="Dismiss"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="16dp"
-        android:background="@color/color_White"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:id="@+id/dissmiss_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/highlightbuttons"
+        android:layout_gravity="center"
+        android:text="Dissmiss"
+        android:state_pressed="true"
+        android:textColor="@color/color_Red"
+        android:textSize="17sp" />
 </LinearLayout>

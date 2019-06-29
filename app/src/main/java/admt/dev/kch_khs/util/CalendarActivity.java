@@ -141,8 +141,8 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject JO = (JSONObject) jsonArray.get(i);
-                    if (!(JO.getString("start").equals("") || JO.getString("start") == null)) {
-                        title_temp[num] = JO.getString("start");
+                    if (!(JO.getString("fullDate").equals("") || JO.getString("fullDate") == null)) {
+                        title_temp[num] = JO.getString("fullDate");
                         Log.d("title temp", title_temp[num].toString());
                         month_temp[num] = JO.getString("month");
 

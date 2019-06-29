@@ -121,7 +121,7 @@ public class Activity_Settings extends AppCompatActivity implements View.OnClick
 
 
             if(v.equals(copy)){
-                startActivity(new Intent(Activity_Settings.this, AboutActivity.class));
+                startActivity(new Intent(Activity_Settings.this, ResourceActivity.class));
 
 
 
@@ -129,7 +129,7 @@ public class Activity_Settings extends AppCompatActivity implements View.OnClick
 
             startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("http://forcemobilestudios.com/ramstein-dorms-feedback")));
         }    if(v.equals(about_privacy)){
-            startActivity(new Intent(Activity_Settings.this, AboutActivity.class));
+            startActivity(new Intent(Activity_Settings.this, ResourceActivity.class));
 
 
         } if(v.equals(facebook_button)){

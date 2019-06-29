@@ -31,6 +31,10 @@ public class notification extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drc_notification_alert);
         mdatabasehelper = new DatabaseHelper(this);
+        final Button dismiss = (Button)findViewById(R.id.dissmiss_button);
+        dismiss.setOnClickListener(this);
+
+
 
         TextView text = (TextView) findViewById(R.id.textView1);
 
@@ -73,7 +77,7 @@ public class notification extends AppCompatActivity implements View.OnClickListe
     @Override public void onClick(View v) {
 
 
-        final Button dismiss = (Button)findViewById(R.id.dismiss_button);
+        final Button dismiss = (Button)findViewById(R.id.dissmiss_button);
 
         dismiss.setOnClickListener(this);
 
