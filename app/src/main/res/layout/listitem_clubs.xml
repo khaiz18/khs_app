@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="150dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,16 +13,17 @@
             android:id="@+id/tv_clubs_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:text="Club Name"
-            android:textSize="20dp"
             android:background="@color/color_Red"
-            android:textColor="#FFFFFF"/>
+            android:gravity="center"
+            android:text="Club Name"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="125dp"
+        android:layout_height="120dp"
         android:background="#FFFFFF"
         android:orientation="vertical"
         android:paddingLeft="15dp">
@@ -31,26 +32,42 @@
             android:id="@+id/tv_clubs_rep"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:text="Club Representative"
-            android:textStyle="bold"
             android:gravity="center_vertical"
-            android:textColor="#000000"/>
+            android:text="Club Representative"
+            android:textColor="#000000"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_clubs_location"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:text="Location"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
         <TextView
             android:id="@+id/tv_clubs_email"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="Location"
-            android:textColor="#000000"/>
+            android:text=""
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tv_clubs_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tv_clubs_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textColor="#000000" />
 
     </LinearLayout>
 </LinearLayout>

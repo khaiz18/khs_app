@@ -12,16 +12,18 @@ import admt.dev.kch_khs.util.ClubsActivity;
 import admt.dev.kch_khs.R;
 
 public class ClubsAdapter extends BaseAdapter {
-    String [] name, rep, email, location;
+    String [] name, rep, email, location, date, time;
     Context context;
     private static LayoutInflater inflater=null;
 
-    public ClubsAdapter(ClubsActivity clubsActivity, String[] name, String[] rep, String [] location, String[] email) {
+    public ClubsAdapter(ClubsActivity clubsActivity, String[] name, String[] rep, String [] location, String [] email, String [] date, String [] time) {
         // TODO Auto-generated constructor stub
         this.name=name;
         this.rep=rep;
         this.email=email;
         this.location = location;
+        this.date = date;
+        this.time = time;
         context=clubsActivity;
         inflater = ( LayoutInflater )context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -47,7 +49,7 @@ public class ClubsAdapter extends BaseAdapter {
 
     public class Holder
     {
-        TextView tv_clubs_name, tv_clubs_rep, tv_clubs_email, tv_clubs_location;
+        TextView tv_clubs_name, tv_clubs_rep, tv_clubs_email, tv_clubs_location, tv_clubs_date, tv_clubs_time;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -60,11 +62,18 @@ public class ClubsAdapter extends BaseAdapter {
         holder.tv_clubs_rep=(TextView) view.findViewById(R.id.tv_clubs_rep);
         holder.tv_clubs_email=(TextView) view.findViewById(R.id.tv_clubs_email);
         holder.tv_clubs_location = (TextView) view.findViewById(R.id.tv_clubs_location);
+        holder.tv_clubs_date = (TextView) view.findViewById(R.id.tv_clubs_date);
+        holder.tv_clubs_time = (TextView) view.findViewById(R.id.tv_clubs_time);
+
+
 
         holder.tv_clubs_name.setText(name[position]);
         holder.tv_clubs_rep.setText(" Name: " + rep[position]);
         holder.tv_clubs_location.setText(" Location: " + location[position]);
         holder.tv_clubs_email.setText(" Email: "+ email[position]);
+        holder.tv_clubs_date.setText(" Date: "+ date[position]);
+        holder.tv_clubs_time.setText(" Time: "+ time[position]);
+
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

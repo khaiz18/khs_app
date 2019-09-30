@@ -337,15 +337,24 @@
             android:textStyle="bold"
             />
 
+        <ScrollView android:id="@+id/textAreaScroller"
+            android:layout_width="fill_parent"
+            android:layout_height="300px"
+            android:layout_x="0px"
+            android:layout_y="25px"
+            android:scrollbars="vertical">
+
         <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="5"
-            android:gravity="center"
+            android:scrollbars = "vertical"
+            android:gravity="left"
             android:text=""
             android:textColor="@color/color_White" />
 
+        </ScrollView>
     </LinearLayout>
 
     <TextView

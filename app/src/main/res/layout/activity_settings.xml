@@ -17,33 +17,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.constraint.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="150dp"
+                android:layout_weight="7"
+                android:background="@drawable/khschool">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="149dp"
-                    android:layout_marginTop="15dp"
-                    android:alpha="0.1"
-                    android:src="@drawable/khsicon"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="KHS About Us"
-                    android:textColor="@color/color_White"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
 
 
             <LinearLayout
@@ -58,6 +39,24 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="KHS Mission Statement"
+                        android:textColor="@color/color_White"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:gravity="center_horizontal"
+                        android:text="To provide a challenging and comprehensive education for students to become model citizens in a diverse and global society."
+                        android:textColor="@color/color_White"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="match_parent"

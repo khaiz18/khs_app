@@ -22,6 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String col2 = "body";
 
 
+
     public DatabaseHelper(Context context){
         super(context, TABLE_NAME, null, 1);
 
@@ -36,6 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String createTable = "CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY  AUTOINCREMENT, "  + col1 + " TEXT )";
         db.execSQL(createTable);
+
     }
 
     @Override
@@ -69,7 +71,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getData(){
 
     SQLiteDatabase db = this.getWritableDatabase();
-    String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY title DESC";
+    String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY title ASC";
     Cursor data = db.rawQuery(query,null);
     return data;
 

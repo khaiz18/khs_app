@@ -2,7 +2,9 @@ package admt.dev.kch_khs.app;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -75,6 +77,7 @@ public class notification extends AppCompatActivity implements View.OnClickListe
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override public void onClick(View v) {
 
 
@@ -87,7 +90,7 @@ public class notification extends AppCompatActivity implements View.OnClickListe
 
             if (v.equals(dismiss)) {
                 startActivity(new Intent(notification.this, MainActivity.class));
-                finish();
+                finishAffinity();
 
 
             }

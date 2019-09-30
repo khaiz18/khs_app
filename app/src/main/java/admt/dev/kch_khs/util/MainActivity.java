@@ -9,12 +9,15 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.util.Log;
@@ -59,7 +62,7 @@ import admt.dev.kch_khs.adapter.ResourceAdatper;
 import admt.dev.kch_khs.util.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView tv_date;
+    TextView tv_date, textView6;
     LinearLayout ll_cal, ll_about, ll_res, ll_ath, ll_clubs, ll_con, sBell;
     ListView lv_resource;
     ImageView img_home_back;
@@ -119,7 +122,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         // textView.setText(title[0]);
-
 
 
 
@@ -191,6 +193,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         cursor.moveToNext();
                     }
                 }
+
                 cursor.close();
                 db.close();
             mBadge = (NotificationBadge) findViewById(R.id.badge);
@@ -205,6 +208,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
+
     public void dbticker(){
 
         DatabaseHelper db = new DatabaseHelper(this);
@@ -214,6 +219,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List<String> myFloats = new ArrayList<>();
        // String[] myFloats = {" ", " " , " ", " "};
         String tempFloat;
+
+
+
 
         if (cursor.moveToFirst())
         {
@@ -244,42 +252,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
-
-
+        Date today = Calendar.getInstance().getTime();//getting date
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");//formating according to my need
+        Calendar cal=Calendar.getInstance();
+        SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
+        String month_name = month_date.format(cal.getTime());
+        String date = formatter.format(today);
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+        Date d = new Date();
+        String dayOfTheWeek = sdf.format(d);
         //tv_date.setText("\t \t \t \t \t \t"+ myFloats.get(0)  + "\t \t \t \t \t \t" + myFloats.get(1) + "\t \t \t \t \t \t" + myFloats.get(2) + "\t \t \t \t \t \t" + myFloats.get(3) );
         if(myFloats.size()==0) {
-            tv_date.setText("No new Messages");
-        }else if(myFloats.size() == 1){
+            tv_date.setText(dayOfTheWeek + " " + date);
+        }else if(myFloats.size() >= 1) {
 
-
-
-
-
-            tv_date.setText("\t \t \t \t \t \t"+ myFloats.get(0) );
-}else if(myFloats.size() == 2)
-        {
-            tv_date.setText("\t \t \t \t \t \t"+ myFloats.get(0)  + "\t \t \t \t \t \t" + myFloats.get(1)  );
-
-
-        }else if(myFloats.size() == 3){
-
-
-            tv_date.setText("\t \t \t \t \t \t"+ myFloats.get(0)  + "\t \t \t \t \t \t" + myFloats.get(1) + "\t \t \t \t \t \t" + myFloats.get(2)  );
-
-
-
-        }else if(myFloats.size() == 4){
-
-            tv_date.setText("\t \t \t \t \t \t"+ myFloats.get(0)  + "\t \t \t \t \t \t" + myFloats.get(1) + "\t \t \t \t \t \t" + myFloats.get(2) + "\t \t \t \t \t \t" + myFloats.get(3) );
-
-
-
-        }else {
-
-            tv_date.setText("\t \t \t \t \t \t"+ myFloats.get(0)  + "\t \t \t \t \t \t" + myFloats.get(1) + "\t \t \t \t \t \t" + myFloats.get(2) + "\t \t \t \t \t \t" + myFloats.get(3) + "\t \t \t \t \t \t" + myFloats.get(4));
-
-
+            int test = myFloats.size() - 1;
+            //String test2 = myFloats.lastIndexOf(test);
+            tv_date.setText(myFloats.get(test).toString());
         }
+
 
             final float startSize = 1; // Size in pixels
             final float endSize = 1;
@@ -296,6 +287,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     tv_date.setTranslationX(translationX);
                 }
             });
+
+
             animator.start();
 
 
@@ -361,8 +354,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.setMessage("Do you want to exit?")
                 .setCancelable(true)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                     public void onClick(DialogInterface dialog, int id) {
-                        finish();
+                        finishAffinity();
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {

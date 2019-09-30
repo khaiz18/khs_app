@@ -1,46 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
-
-        <TextView
-            android:id="@+id/tv_res_title"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:text="Website"
-            android:textSize="20dp"
-            android:background="#FFFFFF"
-            android:textColor="#000000"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/color_Red"
+        android:layout_height="120dp"
+        android:background="@color/color_White"
         android:orientation="vertical"
-        android:paddingLeft="15dp">
+        android:paddingLeft="5dp">
 
         <TextView
             android:id="@+id/tv_res_info"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:gravity="center_vertical"
             android:text="Website for SAT"
-            android:textColor="#FFFFFF" />
+            android:textColor="#202020"
+            android:textSize="15dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_res_domain"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
+            android:autoLink="all"
             android:text="https://collegereadiness.collegeboard.org/sat"
-            android:textColor="#FFFFFF" />
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="16dp"
+            android:textStyle="bold|italic" />
 
     </LinearLayout>
 </LinearLayout>

@@ -7,7 +7,7 @@
     tools:context=".ResourceActivity"
     android:orientation="vertical"
     android:weightSum="100"
-    android:background="#202020">
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -66,7 +66,7 @@
         <ListView
             android:id="@+id/lv_resource"
             android:layout_width="match_parent"
-            android:layout_height="500dp">
+            android:layout_height="match_parent">
 
         </ListView>
     </LinearLayout>
