@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/tv_athletics_sport"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="30dp"
         android:textColor="#000000"
         android:text="Soccer"
         android:textStyle="bold"
@@ -21,7 +21,7 @@
     <TextView
         android:id="@+id/tv_athletics_name"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:textColor="#000000"
         android:text="Coach Remler"
         android:textSize="15dp"
@@ -30,7 +30,7 @@
     <TextView
         android:id="@+id/tv_athletics_email"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:textColor="#000000"
         android:text="Coach Remler"
         android:textSize="15dp"

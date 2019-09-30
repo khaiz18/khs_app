@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="100dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -22,7 +22,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="50dp"
         android:background="@color/color_Red"
         android:orientation="vertical"
         android:paddingLeft="15dp">
@@ -38,7 +38,7 @@
         <TextView
             android:id="@+id/tv_res_domain"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="30dp"
             android:text="https://collegereadiness.collegeboard.org/sat"
             android:textColor="#FFFFFF" />
 

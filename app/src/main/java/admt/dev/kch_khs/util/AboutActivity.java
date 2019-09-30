@@ -81,7 +81,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         protected Void doInBackground(Void... voids) {
 
             try {
-                URL url = new URL("https://script.google.com/macros/s/AKfycbzx0hk-z4OjMzK7Y5B5XL8CD5-6tqr7flPQB5HxGe-o7SQ_qCGN/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycbyi8KqFXHUmOfw_3pdVj5mJF240-_1Tw_uRCr30AW-H6kDZQO0x/exec");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -93,10 +93,9 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
                 }
 
                 JSONObject jo_original = new JSONObject(data);
-                JSONArray jsonArray = jo_original.getJSONArray("about");
+                JSONArray jsonArray = jo_original.getJSONArray("AboutKHS");
                 JSONObject jo_each = (JSONObject) jsonArray.get(0);
-                aboutus = jo_each.getString("aboutus");
-                goal = jo_each.getString("goal");
+                aboutus = jo_each.getString("about");
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -117,8 +116,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
                 dialog.dismiss();
             }
 
-            tv_info.setText(aboutus);
-            tv_goal.setText(goal);
+            tv_goal.setText(aboutus);
         }
     }
 }

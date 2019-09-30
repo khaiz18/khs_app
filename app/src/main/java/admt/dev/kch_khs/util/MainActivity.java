@@ -48,8 +48,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import admt.dev.kch_khs.R;
@@ -66,6 +68,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String[] info;
     String[] domain;
     Activity activity;
+    TextView label, d_message;
+
+
     NotificationBadge mBadge;
     private static final String TABLE_NAME = "fnotification";
 
@@ -79,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        FirebaseMessaging.getInstance().subscribeToTopic("test");
+        FirebaseMessaging.getInstance().subscribeToTopic("khs");
 
 
 
@@ -109,7 +114,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ll_clubs.setOnClickListener(this);
         ll_con.setOnClickListener(this);
         sBell.setOnClickListener(this);
+        label = (TextView) findViewById(R.id.textView5);
+        d_message = (TextView) findViewById(R.id.textView6);
 
+
+        // textView.setText(title[0]);
 
 
 
@@ -147,21 +156,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dbticker();
 
         dbBadge();
+        fetchData process = new fetchData(this);
+        process.execute();
+
 
     }
 
 
-    @Override
+   /* @Override
     protected void onPause() {
         super.onPause();
         dbticker();
         dbBadge();
-    }
+    }*/
 
     @Override
     protected void onResume() {
         super.onResume();
-        dbticker();
+       dbticker();
         dbBadge();
     }
 
@@ -199,38 +211,92 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Cursor cursor = db.getData();
         cursor.moveToFirst();
-        String[] myFloats = {" ", " " , " ", " "};
+        List<String> myFloats = new ArrayList<>();
+       // String[] myFloats = {" ", " " , " ", " "};
+        String tempFloat;
 
         if (cursor.moveToFirst())
         {
             for (int i = 0; i < cursor.getCount(); i++)
             {
-                myFloats[i] = cursor.getString(1);
+
+                //string.append(myFloats.get(i).toString());
+                    //myFloats.get() = cursor.getString(1);
+
+                myFloats.add((cursor.getString(1)));
                 cursor.moveToNext();
+
+
             }
         }
         cursor.close();
         db.close();
 
 
-        tv_date.setText("\t \t \t \t \t \t"+ myFloats[0]  + "\t \t \t \t \t \t" + myFloats[1] + "\t \t \t \t \t \t" + myFloats[2] + "\t \t \t \t \t \t" + myFloats[3] );
 
-        final float startSize = 1; // Size in pixels
-        final float endSize = 1;
-        final ValueAnimator animator = ValueAnimator.ofFloat(1.0f, -1.0f);
-        animator.setRepeatCount(ValueAnimator.INFINITE);
-        animator.setInterpolator(new LinearInterpolator());
-        animator.setDuration(9000L);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                final float progress = (float) animation.getAnimatedValue();
-                final float width = tv_date.getWidth();
-                final float translationX = width * progress;
-                tv_date.setTranslationX(translationX);
-            }
-        });
-        animator.start();
+        if(myFloats.size() > 4){
+
+            String temp;
+            temp = myFloats.get(5);
+            myFloats.add(0, temp);
+            myFloats.remove(5);
+
+
+        }
+
+
+
+        //tv_date.setText("\t \t \t \t \t \t"+ myFloats.get(0)  + "\t \t \t \t \t \t" + myFloats.get(1) + "\t \t \t \t \t \t" + myFloats.get(2) + "\t \t \t \t \t \t" + myFloats.get(3) );
+        if(myFloats.size()==0) {
+            tv_date.setText("No new Messages");
+        }else if(myFloats.size() == 1){
+
+
+
+
+
+            tv_date.setText("\t \t \t \t \t \t"+ myFloats.get(0) );
+}else if(myFloats.size() == 2)
+        {
+            tv_date.setText("\t \t \t \t \t \t"+ myFloats.get(0)  + "\t \t \t \t \t \t" + myFloats.get(1)  );
+
+
+        }else if(myFloats.size() == 3){
+
+
+            tv_date.setText("\t \t \t \t \t \t"+ myFloats.get(0)  + "\t \t \t \t \t \t" + myFloats.get(1) + "\t \t \t \t \t \t" + myFloats.get(2)  );
+
+
+
+        }else if(myFloats.size() == 4){
+
+            tv_date.setText("\t \t \t \t \t \t"+ myFloats.get(0)  + "\t \t \t \t \t \t" + myFloats.get(1) + "\t \t \t \t \t \t" + myFloats.get(2) + "\t \t \t \t \t \t" + myFloats.get(3) );
+
+
+
+        }else {
+
+            tv_date.setText("\t \t \t \t \t \t"+ myFloats.get(0)  + "\t \t \t \t \t \t" + myFloats.get(1) + "\t \t \t \t \t \t" + myFloats.get(2) + "\t \t \t \t \t \t" + myFloats.get(3) + "\t \t \t \t \t \t" + myFloats.get(4));
+
+
+        }
+
+            final float startSize = 1; // Size in pixels
+            final float endSize = 1;
+            final ValueAnimator animator = ValueAnimator.ofFloat(1.0f, -1.0f);
+            animator.setRepeatCount(ValueAnimator.INFINITE);
+            animator.setInterpolator(new LinearInterpolator());
+            animator.setDuration(9000L);
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    final float progress = (float) animation.getAnimatedValue();
+                    final float width = tv_date.getWidth();
+                    final float translationX = width * progress;
+                    tv_date.setTranslationX(translationX);
+                }
+            });
+            animator.start();
 
 
     }
@@ -312,6 +378,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public class fetchData extends AsyncTask<Void, Void, Void> {
 
         String data = "";
+        String label_M="";
+        String daily_M = "";
         String[] title_temp;
         String[] info_temp;
         String[] domain_temp;
@@ -331,7 +399,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                URL url = new URL("https://script.google.com/macros/s/AKfycbxZxrG1Fhq6qMuxXSFNGneKXUZDkMXvDsFysdYRDKOdhi-iqgN5/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycbzTWtJ6J_kPfsKuOd5th1xHAvcSYx7596om1Z5WuIAiw5zi0FM/exec");
                 // https://script.google.com/macros/s/AKfycbwUL9kaUSG_DTLUsnwhGfT_QaECSUHqqvE7Zb8_WqsqJa6V61lj/exec
                 //https://script.google.com/macros/s/AKfycbzLKHCHMVd3VciwauCGQaBAPoy1ItdCBwYzjaY7loB7spBJgp8/exec
 
@@ -346,24 +414,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
 
                 JSONObject jo_original = new JSONObject(data);
-                JSONArray jsonArray = jo_original.getJSONArray("athletics");
+                JSONArray jsonArray = jo_original.getJSONArray("MessageKHS");
+                JSONObject jo_each = (JSONObject) jsonArray.get(0);
 
                 title_temp = new String[jsonArray.length()];
                 info_temp = new String[jsonArray.length()];
                 domain_temp = new String[jsonArray.length()];
-
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject JO = (JSONObject) jsonArray.get(i);
-                    if (!(JO.getString("sport").equals("") || JO.getString("sport") == null)) {
-                        title_temp[num] = JO.getString("sport");
-                        info_temp[num] = JO.getString("name");
-                        domain_temp[num] = JO.getString("kind");
-                        Log.d("test", "doInBackground: " + domain_temp[1]);
-                        num++;
-                    }
+                label_M = jo_each.getString("labelName");
+                daily_M = jo_each.getString("dailyMessage");
 
 
-                }
+
+
+
 
 
             } catch (MalformedURLException e) {
@@ -385,34 +448,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 dialog.dismiss();
             }
 
-            title = new String[num];
+          /*  title = new String[num];
             info = new String[num];
             domain = new String[num];
             for (int i = 0; i < num; i++) {
                 title[i] = title_temp[i];
                 info[i] = info_temp[i];
                 domain[i] = domain_temp[i];
-            }
+            }*/
+            label.setText(label_M);
+            d_message.setText(daily_M);
 
-            //   list_adapter = new ResourceAdatper((ResourceActivity) activity, title, info, domain);
-
-            //   lv_resource.setAdapter(list_adapter);
-
-          /*  tv_date.setText(title[0]);
-            final ValueAnimator animator = ValueAnimator.ofFloat(1.0f, -1.0f);
-            animator.setRepeatCount(ValueAnimator.INFINITE);
-            animator.setInterpolator(new LinearInterpolator());
-            animator.setDuration(9000L);
-            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator animation) {
-                    final float progress = (float) animation.getAnimatedValue();
-                    final float width = tv_date.getWidth();
-                    final float translationX = width * progress;
-                    tv_date.setTranslationX(translationX);
-                }
-            });
-           animator.start();*/
         }
 
 

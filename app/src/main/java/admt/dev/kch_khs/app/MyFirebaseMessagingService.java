@@ -1,8 +1,10 @@
 package admt.dev.kch_khs.app;
 
+import android.app.ActivityManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -18,6 +20,8 @@ import admt.dev.kch_khs.R;
 import admt.dev.kch_khs.util.DatabaseHelper;
 import admt.dev.kch_khs.util.MainActivity;
 
+import static android.support.constraint.Constraints.TAG;
+
 public class MyFirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
 
     private static final String TAG = "News";
@@ -29,11 +33,20 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
 
+
+
+
+
+
+
+
         super.onMessageReceived(remoteMessage);
         mdatabasehelper = new DatabaseHelper(this);
+
         fTitle = remoteMessage.getData().get("Message Key");
         String newEntry = fTitle.toString();
-        addData(newEntry);
+        mdatabasehelper.addData(newEntry);
+       // addData(newEntry);
         Log.d("First",fTitle);
 
         Log.d("msg", "onMessageReceived: " + remoteMessage.getData().get("Message Key"));
@@ -61,22 +74,8 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
     }
 
 
-    public void addData(String newEntry){
-        boolean insertData = mdatabasehelper.addData(newEntry);
-
-        if(insertData ){
-
-            Log.d("TRUE",fTitle);
 
 
-        }else
-        {
-            Log.d("FALSE",fTitle);
-
-
-        }
-
-    }
 
 
 

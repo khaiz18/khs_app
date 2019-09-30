@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="86dp"
+        android:layout_height="40dp"
         android:layout_weight="7"
         android:background="@drawable/khslogo">
 
@@ -60,7 +60,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="10dp"
         android:layout_weight="30"
         android:background="#FFFFFF"
         android:orientation="vertical"
@@ -96,7 +96,7 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="81dp"
+            android:layout_height="0dp"
             android:layout_weight="25"
             android:paddingLeft="20dp"
             android:paddingRight="20dp">
@@ -114,7 +114,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="150dp"
         android:layout_weight="5"
         android:background="@color/color_Red"
         android:paddingLeft="20dp">
@@ -124,7 +124,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="left|center_vertical"
-            android:text=""
+            android:text="TEST"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 

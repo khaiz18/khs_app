@@ -40,7 +40,7 @@
             android:layout_height="56dp"
             android:layout_marginBottom="0dp"
             android:gravity="center_vertical"
-            android:text="Friday November 9, 2018"
+            android:text="Testing notification datastructure"
             android:textColor="@color/color_Red"
             android:textSize="22dp"
             android:textStyle="bold" />
@@ -332,9 +332,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:gravity="center"
+            android:text=""
             android:textColor="@color/color_White"
             android:textStyle="bold"
-            android:text="School Hours:"
             />
 
         <TextView
@@ -343,7 +343,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:gravity="center"
-            android:text="Office: 7:00 a.m - 4:30 p.m \n Teachers: 8:00 a.m - 3:20 p.m \n Students: 8:15 a.m - 3:00 p.m \n (Mon, Tue, Wed,  Fri) \n Students: 9:15 a.m - 3:00 p.m (Thr) \n Summer Hours: 8:00 - 4:00 p.m"
+            android:text=""
             android:textColor="@color/color_White" />
 
     </LinearLayout>

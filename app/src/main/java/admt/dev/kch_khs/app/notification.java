@@ -56,7 +56,8 @@ public class notification extends AppCompatActivity implements View.OnClickListe
                         value = getIntent().getExtras().get(key); // value will represent your message body... Enjoy It
                         text.setText("KHS NOTIFICATION : \n" + value);
                         Log.d("NotificationTag", key + "____" + value);
-
+                        String ivalue = value.toString();
+                        mdatabasehelper.addData(ivalue);
                     }
 
 
@@ -86,6 +87,7 @@ public class notification extends AppCompatActivity implements View.OnClickListe
 
             if (v.equals(dismiss)) {
                 startActivity(new Intent(notification.this, MainActivity.class));
+                finish();
 
 
             }

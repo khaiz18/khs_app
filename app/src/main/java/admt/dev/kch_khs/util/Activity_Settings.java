@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 import admt.dev.kch_khs.R;
@@ -63,22 +64,24 @@ public class Activity_Settings extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_settings);
 
         final Button facebook_button = (Button)findViewById(R.id.facebook_settings);
-        final Button visit_us = (Button)findViewById(R.id.visit);
+        final Button school = (Button)findViewById(R.id.school);
 
         final Button rate = (Button)findViewById(R.id.rate);
         final Button feedback = (Button)findViewById(R.id.feedback);
         final Button share_with_friends = (Button)findViewById(R.id.share);
-        final Button copy = (Button)findViewById(R.id.copyright);
+        final Button twitter = (Button)findViewById(R.id.twitter);
+        final Button youtube = (Button)findViewById(R.id.youtube);
 
         final Button about_privacy = (Button)findViewById(R.id.about_privacy);
 
 
-        copy.setOnClickListener( this);
-        visit_us.setOnClickListener(this);
+        twitter.setOnClickListener( this);
+        school.setOnClickListener(this);
         rate.setOnClickListener( this);
         feedback.setOnClickListener( this);
         share_with_friends.setOnClickListener( this);
         about_privacy.setOnClickListener( this);
+        youtube.setOnClickListener(this);
 
         facebook_button.setOnClickListener( this);
 
@@ -97,22 +100,23 @@ public class Activity_Settings extends AppCompatActivity implements View.OnClick
 
 
         final Button facebook_button = (Button)findViewById(R.id.facebook_settings);
-        final Button visit_us = (Button)findViewById(R.id.visit);
+        final Button school = (Button)findViewById(R.id.school);
 
         final Button rate = (Button)findViewById(R.id.rate);
         final Button feedback = (Button)findViewById(R.id.feedback);
         final Button share_with_friends = (Button)findViewById(R.id.share);
-        final Button copy = (Button)findViewById(R.id.copyright);
-
+        final Button twitter = (Button)findViewById(R.id.twitter);
+        final Button youtube = (Button)findViewById(R.id.youtube);
         final Button about_privacy = (Button)findViewById(R.id.about_privacy);
 
 
-        copy.setOnClickListener( this);
-        visit_us.setOnClickListener(this);
+        twitter.setOnClickListener( this);
+        school.setOnClickListener(this);
         rate.setOnClickListener( this);
         feedback.setOnClickListener( this);
         share_with_friends.setOnClickListener( this);
         about_privacy.setOnClickListener( this);
+        youtube.setOnClickListener(this);
 
         facebook_button.setOnClickListener( this);
 
@@ -120,31 +124,64 @@ public class Activity_Settings extends AppCompatActivity implements View.OnClick
         {
 
 
-            if(v.equals(copy)){
+            if(v.equals(twitter)){
                 startActivity(new Intent(Activity_Settings.this, ResourceActivity.class));
-
+                startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://twitter.com/khs_raiders?lang=en\n")));
 
 
             }if(v.equals(feedback)){
 
-            startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("http://forcemobilestudios.com/ramstein-dorms-feedback")));
+            String subject = "Feedback for KHS APP";
+
+            String body = "";
+
+            String mailto = "mailto:khsdodea@gmail.com" +
+                    "?subject=" + Uri.encode(subject) +
+                    "&body=" + Uri.encode(body);
+
+
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+            emailIntent.setData(Uri.parse(mailto));
+
+            try {
+                startActivity(emailIntent);
+                finish();
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(this, "no email app is available", Toast.LENGTH_SHORT);
+                //TODO: Handle case where no email app is available
+            }
+
+
+
+
         }    if(v.equals(about_privacy)){
-            startActivity(new Intent(Activity_Settings.this, ResourceActivity.class));
+
+            startActivity(new Intent(Activity_Settings.this, AboutActivity.class));
 
 
         } if(v.equals(facebook_button)){
 
-            startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.facebook.com/forcemobilestudios/")));
+            startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.facebook.com/KaiserslauternHS/")));
 
 
-        }if(v.equals(visit_us)){
+        }if(v.equals(school)){
 
-            startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("http://forcemobilestudios.com/")));
+            startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://sites.google.com/a/student.dodea.edu/kaiserslautern-high-school/")));
 
 
-        }if(v.equals(rate)){
+        }if(v.equals(youtube)){
+
+            startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.youtube.com")));
+
+
+        }
+
+
+        if(v.equals(rate)){
 
         rateApp();
+
+
         }if(v.equals(share_with_friends)){
 
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);

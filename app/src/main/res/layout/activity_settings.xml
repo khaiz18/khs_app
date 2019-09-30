@@ -78,7 +78,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/highlightbuttons"
                         android:paddingRight="200dp"
-                        android:text="About / Privacy"
+                        android:text="About KHS"
                         android:state_pressed="true"
                         android:textColor="@color/color_White"
 
@@ -86,16 +86,6 @@
 
 
 
-                    <Button
-                        android:id="@+id/copyright"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/highlightbuttons"
-                        android:paddingRight="240dp"
-                        android:text="Copyright"
-                        android:textColor="@color/color_White"
-                        android:textSize="17sp" />
 
 
 
@@ -115,7 +105,7 @@
                         android:paddingBottom="8dp"
                         android:paddingLeft="3dp"
                         android:paddingTop="8dp"
-                        android:text="Support"
+                        android:text="KHS APP Support"
                         android:textColor="@color/color_White"
                         android:textSize="17sp" />
 
@@ -172,7 +162,7 @@
                         android:paddingBottom="8dp"
                         android:paddingLeft="3dp"
                         android:paddingTop="8dp"
-                        android:text="Force Mobile Studios"
+                        android:text="Social Media"
                         android:textColor="@color/color_White"
                         android:textSize="17sp" />
 
@@ -191,15 +181,38 @@
 
 
                     <Button
-                        android:id="@+id/visit"
+                        android:id="@+id/twitter"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/highlightbuttons"
                         android:paddingRight="240dp"
-                        android:text="Visit us"
+                        android:text="Twitter"
                         android:textColor="@color/color_White"
                         android:textSize="17sp" />
+
+                    <Button
+                        android:id="@+id/youtube"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/highlightbuttons"
+                        android:paddingRight="240dp"
+                        android:text="Youtube"
+                        android:textColor="@color/color_White"
+                        android:textSize="17sp" />
+
+                    <Button
+                        android:id="@+id/school"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/highlightbuttons"
+                        android:paddingRight="240dp"
+                        android:text="School Website"
+                        android:textColor="@color/color_White"
+                        android:textSize="17sp" />
+
 
 
                 </LinearLayout>
